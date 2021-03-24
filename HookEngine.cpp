@@ -1,18 +1,18 @@
 ﻿#include "HookEngine.h"
 
-HookEngine::Hook::Hook()
+HookEngine::Hook::CHook()
 {
 	pAddress = nullptr;
 	pOldCode = nullptr;
 }
 
-HookEngine::Hook::~Hook()
+HookEngine::Hook::~CHook()
 {
 	if (pOldCode)
 		Uninstall();
 }
 
-bool HookEngine::Hook::Install(void* pFunction, void* pHook)
+bool HookEngine::CHook::Install(void* pFunction, void* pHook)
 {
 	if (pOldCode)
 		return false;
@@ -56,7 +56,7 @@ bool HookEngine::Hook::Install(void* pFunction, void* pHook)
 	return true;
 }
 
-HookEngine::uint_auto* HookEngine::Hook::Uninstall()
+HookEngine::uint_auto* HookEngine::CHook::Uninstall()
 {
 	if (!pOldCode)
 		return nullptr;
@@ -68,7 +68,7 @@ HookEngine::uint_auto* HookEngine::Hook::Uninstall()
 	return pAddress;
 }
 
-bool HookEngine::Hook::IsInstalled()
+bool HookEngine::CHook::IsInstalled()
 {
 	return pOldCode ? true : false;
 }

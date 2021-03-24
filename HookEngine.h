@@ -1,3 +1,14 @@
+/*
+   _____ __                       ____
+  / ___// /____  ____ _________  / / /____
+  \__ \/ __/ _ \/ __ `/ ___/ _ \/ / / ___/
+ ___/ / /_/  __/ /_/ / /  /  __/ / (__  )
+/____/\__/\___/\__,_/_/   \___/_/_/____/
+HookEngine Library
+Stearells (C) 2021
+*/
+
+
 #pragma once
 #include <Windows.h>
 #include <cstdint>
@@ -13,15 +24,15 @@ namespace HookEngine
 	typedef uint32_t uint_auto;
 #endif
 
-	class Hook
+	class CHook
 	{
 	private:
 		unsigned char* pOldCode;
 		uint_auto*     pAddress;
 
 	public:
-		Hook();
-		~Hook();
+		CHook();
+		~CHook();
 
 		bool        Install(void* pFunction, void* pHook);
 		uint_auto*  Uninstall();
