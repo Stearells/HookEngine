@@ -24,7 +24,7 @@ namespace HookEngine
 		~Hook();
 
 		bool		Install(void* pFunction, void* pHook);
-		uint_auto*  Uninstall();
+		uint_auto*	Uninstall();
 		bool		IsInstalled();
 	};
 

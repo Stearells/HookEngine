@@ -23,20 +23,20 @@ bool HookEngine::Hook::Install(void* pFunction, void* pHook)
 #ifdef _WIN64
 	unsigned char newCode[] =
 	{
-		0x48, 0xB8,										  // mov rax
-		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,	  // pHook
-		0x50,											  // push rax (return address)
-		0xC3											  // ret
+		0x48, 0xB8,											// mov rax
+		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,		// pHook
+		0x50,												// push rax (return address)
+		0xC3												// ret
 	};
 
 	*((uint_auto*)&newCode[2]) = (uint_auto)pHook;
 #else
 	unsigned char newCode[] =
 	{
-		0xB8,											  // mov eax
-		0x00, 0x00, 0x00, 0x00,							  // pHook
-		0x50,											  // push eax (return address)
-		0xC3											  // ret
+		0xB8,											// mov eax
+		0x00, 0x00, 0x00, 0x00,							// pHook
+		0x50,											// push eax (return address)
+		0xC3											// ret
 	};
 
 	*((uint_auto*)&newCode[1]) = (uint_auto)pHook;
