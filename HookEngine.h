@@ -17,18 +17,18 @@ namespace HookEngine
 	{
 	private:
 		unsigned char* pOldCode;
-		uint_auto*	   pAddress;
+		uint_auto*     pAddress;
 
 	public:
 		Hook();
 		~Hook();
 
-		bool		Install(void* pFunction, void* pHook);
-		uint_auto*	Uninstall();
-		bool		IsInstalled();
+		bool        Install(void* pFunction, void* pHook);
+		uint_auto*  Uninstall();
+		bool        IsInstalled();
 	};
 
-	uint_auto		FindFunction(LPCWSTR moduleName, LPCSTR functionName);
-	DWORD			GetProcessIDByName(const std::wstring& processName);
-	bool			IsWoW64Process(int processID);
+	uint_auto       FindFunction(LPCWSTR moduleName, LPCSTR functionName);
+	DWORD           GetProcessIDByName(const std::wstring& processName);
+	bool            IsWoW64Process(int processID);
 }
