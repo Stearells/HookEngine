@@ -1,12 +1,12 @@
 ﻿#include "HookEngine.h"
 
-HookEngine::Hook::CHook()
+HookEngine::CHook::CHook()
 {
 	pAddress = nullptr;
 	pOldCode = nullptr;
 }
 
-HookEngine::Hook::~CHook()
+HookEngine::CHook::~CHook()
 {
 	if (pOldCode)
 		Uninstall();
