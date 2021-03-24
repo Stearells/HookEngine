@@ -41,6 +41,12 @@ namespace HookEngine
 		bool        IsInstalled();
 	};
 
+	// Memory read/write
+	template <typename T>
+	void WriteMemory(void* pMemory, T value);
+	template <typename T>
+	T ReadMemory(void* pMemory);
+
 	uint_auto       FindFunction(LPCWSTR moduleName, LPCSTR functionName);
 	DWORD           GetProcessIDByName(const std::wstring& processName);
 	bool            IsWoW64Process(int processID);

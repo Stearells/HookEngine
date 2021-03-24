@@ -145,3 +145,14 @@ HookEngine::uint_auto* HookEngine::FindMemoryPattern(void* pMemory, unsigned con
 	}
 	return result;
 }
+
+template<typename T>
+void HookEngine::WriteMemory(void* pMemory, T value) {
+	*(T*)pMemory = value;
+}
+
+template <typename T>
+T HookEngine::ReadMemory(void* pMemory)
+{
+	return *(T*)pMemory;
+}
