@@ -121,3 +121,27 @@ bool HookEngine::IsWoW64Process(int processID)
 	IsWow64Process((HANDLE)processID, &result);
 	return result;
 }
+
+HookEngine::uint_auto* HookEngine::FindMemoryPattern(void* pMemory, unsigned const char Pattern[], size_t MemorySize, size_t PatternSize, int Count)
+{
+	if (!pMemory)
+		return 0;
+
+	if (MemorySize < PatternSize)
+		return 0;
+
+	int tmp = 0;
+	uint_auto* result = nullptr;
+
+	for (uint_auto i = 0; i != MemorySize; i++)
+	{
+		if (!std::memcmp((unsigned char*)((int)pMemory + i), &Pattern[0], PatternSize))
+		{
+			result = (uint_auto*)i;
+			if (tmp == Count)
+				break;
+			tmp++;
+		}
+	}
+	return result;
+}

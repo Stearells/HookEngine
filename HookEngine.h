@@ -20,8 +20,10 @@ namespace HookEngine
 {
 #ifdef _WIN64
 	typedef uint64_t uint_auto;
+	typedef int64_t int_auto;
 #else
 	typedef uint32_t uint_auto;
+	typedef int32_t int_auto;
 #endif
 
 	class CHook
@@ -42,4 +44,5 @@ namespace HookEngine
 	uint_auto       FindFunction(LPCWSTR moduleName, LPCSTR functionName);
 	DWORD           GetProcessIDByName(const std::wstring& processName);
 	bool            IsWoW64Process(int processID);
+	uint_auto*      FindMemoryPattern(void* pMemory, unsigned const char Pattern[], size_t MemorySize, size_t PatternSize, int Count);
 }
