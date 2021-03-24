@@ -51,4 +51,5 @@ namespace HookEngine
 	DWORD           GetProcessIDByName(const std::wstring& processName);
 	bool            IsWoW64Process(int processID);
 	uint_auto*      FindMemoryPattern(void* pMemory, unsigned const char Pattern[], size_t MemorySize, size_t PatternSize, int Count);
+	void			FillMemoryWithNops(void* pMemory, int Count);
 }

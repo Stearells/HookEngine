@@ -146,13 +146,16 @@ HookEngine::uint_auto* HookEngine::FindMemoryPattern(void* pMemory, unsigned con
 	return result;
 }
 
+void HookEngine::FillMemoryWithNops(void* pMemory, int Count) {
+	std::memset(pMemory, 0x90, Count);
+}
+
 template<typename T>
 void HookEngine::WriteMemory(void* pMemory, T value) {
 	*(T*)pMemory = value;
 }
 
 template <typename T>
-T HookEngine::ReadMemory(void* pMemory)
-{
+T HookEngine::ReadMemory(void* pMemory) {
 	return *(T*)pMemory;
 }
