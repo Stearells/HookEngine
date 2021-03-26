@@ -151,6 +151,26 @@ void HookEngine::FillMemoryWithNops(void* pMemory, int Count)
 	std::memset(pMemory, 0x90, Count);
 }
 
+HookEngine::uint_auto* HookEngine::TracePointer(const uint_auto Pointers[], size_t size)
+{
+	uint_auto* tmp = (uint_auto*)*((uint_auto*)Pointers[0]);
+	uint_auto* old;
+
+	for (uint_auto i = 1; i != size; i++)
+	{
+		old = tmp;
+
+		if (!tmp)
+			return 0;
+
+		if (i = size)
+			tmp = tmp + Pointers[i];
+		else
+			tmp = (uint_auto*)(*(tmp)+Pointers[i]);
+	}
+	return tmp;
+}
+
 template<typename T>
 void HookEngine::WriteMemory(void* pMemory, T value) 
 {
